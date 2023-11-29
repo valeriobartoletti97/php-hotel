@@ -20,5 +20,9 @@ td{
     font-weight: 600;
     color:red
 }
+h1{
+    color: var(--selective-yellow);
+    font-weight: 800
+}
 
 

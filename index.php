@@ -2,6 +2,11 @@
 
 include __DIR__ . '/Model/db.php';
 //var_dump($hotels);
+if (isset($_GET['parking'])){
+    $parking = $_GET['parking'];
+    $temp=[];
+    $hotels = array_filter($hotels,  fn($item) => $parking === 'all' || $item['parking'] == $parking);
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +22,17 @@ include __DIR__ . '/Model/db.php';
 </head>
 
 <body>
+    <header class="container text-center my-3">
+        <h1 class="text-uppercase">Prenota il tuo hotel</h1>
+        <form class="d-flex"  method="GET" action="index.php">
+        <select class="form-control me-2" placeholder="Search" aria-label="Search" name="parking">
+          <option value="all">All</option>
+          <option value="0">Parking not available</option>
+          <option value="1">Parking available</option> 
+        </select>
+        <button class="btn btn-success" type="submit">Search</button>
+        </form>
+    </header>
     <main>
         <div class="container text-center my-3">
             <div class="row">
@@ -24,7 +40,7 @@ include __DIR__ . '/Model/db.php';
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Id</th>
                                 <th scope="col">Hotel Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Parking</th>

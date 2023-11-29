@@ -5,7 +5,13 @@ include __DIR__ . '/Model/db.php';
 if (isset($_GET['parking'])){
     $parking = $_GET['parking'];
     $temp=[];
-    $hotels = array_filter($hotels,  fn($item) => $parking === 'all' || $item['parking'] == $parking);
+    $hotels = array_filter($hotels, fn($item) => $parking === 'all' || $item['parking'] == $parking);
+}
+
+if (isset($_GET['vote'])){
+    $vote = $_GET['vote'];
+    $temp=[];
+    $hotels = array_filter($hotels, fn($item) => $item['vote'] >= $vote);
 }
 ?>
 
@@ -30,6 +36,7 @@ if (isset($_GET['parking'])){
           <option value="0">Parking not available</option>
           <option value="1">Parking available</option> 
         </select>
+        <input type="number" class="form-control" name="vote" id="vote" placeholder="Vote"  min="1" max="5">
         <button class="btn btn-success" type="submit">Search</button>
         </form>
     </header>
@@ -37,6 +44,7 @@ if (isset($_GET['parking'])){
         <div class="container text-center my-3">
             <div class="row">
                 <div class="col-12">
+                    <?php if($hotels) { ?>
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -61,6 +69,14 @@ if (isset($_GET['parking'])){
                         <?php } ?>
                         </tbody>
                     </table>
+                    <?php } else { ?>
+                        <div class="bg-danger text-center text-uppercase py-4">
+                            <h3>
+                                We're sorry, but you're asking too much! :(
+                            </h3>
+                            <span>Try again</span>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

@@ -16,7 +16,9 @@ body{
     background-color: var(--prussian-blue);
 }
 
-div{
-    color:white
+td{
+    font-weight: 600;
+    color:red
 }
+
 

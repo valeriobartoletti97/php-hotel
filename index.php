@@ -25,7 +25,7 @@ include __DIR__ . '/Model/db.php';
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">Hotel Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Parking</th>
                                 <th scope="col">Vote</th>
@@ -38,8 +38,8 @@ include __DIR__ . '/Model/db.php';
                                 <th scope="row">1</th>
                                 <td><?php echo $hotel['name']?></td>
                                 <td><?php echo $hotel['description']?></td>
-                                <td><?php echo $hotel['parking']?></td>
-                                <td><?php echo $hotel['vote']?></td>
+                                <td><?php echo ($hotel['parking'] ? 'Yes' : 'No')?></td>
+                                <td><?php echo $hotel['vote']?>/5</td>
                                 <td><?php echo $hotel['distance_to_center']?> Km</td>
                             </tr>
                         <?php } ?>

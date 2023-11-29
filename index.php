@@ -35,7 +35,7 @@ include __DIR__ . '/Model/db.php';
                         <tbody>
                         <?php foreach ($hotels as $hotel) { ?>
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row"><?php echo $hotel['id']?></th>
                                 <td><?php echo $hotel['name']?></td>
                                 <td><?php echo $hotel['description']?></td>
                                 <td><?php echo ($hotel['parking'] ? 'Yes' : 'No')?></td>

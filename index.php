@@ -1,3 +1,9 @@
+<?php
+
+include __DIR__. '/Model/db.php';
+//var_dump($hotels);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,5 +14,10 @@
     <title>Php Hotel</title>
 </head>
 <body>
+    <div class="container text-center my-3">
+        <?php foreach($hotels as $hotel){
+            echo "<div>$hotel[name] $hotel[description] $hotel[parking] $hotel[vote] $hotel[distance_to_center]</div> ";
+        } ?>
+    </div>
 </body>
 </html>
